@@ -1,0 +1,49 @@
+/*
+Title: base-layout.component.css
+Author: Professor Krasso
+Date: 01/03/2023
+Modified By: April Yang
+Description: styling for base-layout template
+*/
+
+
+
+.logo {
+  margin-left: 75px;
+  font-size: 24px;
+  font-weight: lighter;;
+}
+
+.navbar-container {
+  padding: 5px;
+}
+
+.navbar-link {
+  font-size: 24px;
+  font-weight: lighter;
+}
+
+.main-content {
+  padding-left: 30px;
+}
+
+.footer {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.footer-content {
+  font-size: 16px;
+  font-weight: lighter;
+  padding-left: 100px;
+  letter-spacing: 3px;
+}
+
+.bu-link {
+  text-decoration: none;
+}
+
+.bu-link:hover {
+  text-decoration: underline;
+}
