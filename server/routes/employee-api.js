@@ -11,8 +11,31 @@ const Employee = require("../models/employee");
 
 const router = express.Router();
 
+// find an employee by ID , findEmployeeById
 /**
- * findEmployeeId
+ * @openapi
+ * /api/employees/{empId}:
+ *   get:
+ *     tags:
+ *       - Employees
+ *     name: findEmployeeById
+ *     description: Reads,retrieves an employee by id.
+ *     summary: Returns a employee by id.
+ *     operationId: findEmployeeById
+ *     parameters:
+ *       - name: empId
+ *         in: path
+ *         required: true
+ *         description: Id to filter the employees collection by.
+ *         schema:
+ *           type: number
+ *     responses:
+ *       '200':
+ *         description: Returned an employee with corresponding Id
+ *       '500':
+ *         description: Server Exception
+ *       '501':
+ *         description: MongoDB Exception
  */
 router.get("/:empId", async (req, res) => {
   try {
@@ -40,3 +63,5 @@ router.get("/:empId", async (req, res) => {
     });
   }
 });
+
+module.exports = router;
