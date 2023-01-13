@@ -32,6 +32,7 @@ const PORT = process.env.PORT || 3000;
 const CONN = config.dbConn;
 
 /**
+ * fixed DeprecationWarning
  * (node:26148) [MONGOOSE] DeprecationWarning: Mongoose: the
 `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change.
  */
