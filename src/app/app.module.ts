@@ -20,13 +20,27 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { LoginComponent } from './pages/login/login.component';
+import { MatCard, MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { CookieService } from 'ngx-cookie-service';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AuthLayoutComponent,
-    BaseLayoutComponent
+    BaseLayoutComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +49,21 @@ import { MatIconModule } from '@angular/material/icon';
     FlexLayoutModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    HttpClientModule,
+    MessageModule,
+    MessagesModule,
+    MatMenuModule,
+    MatDividerModule,
+    FormsModule,
+    ReactiveFormsModule
+
+
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

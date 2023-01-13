@@ -13,6 +13,7 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const EmployeeAPI = require("./routes/employee-api");
+const config = require("./data/config.json");
 
 const app = express(); // Express variable.
 
@@ -28,8 +29,13 @@ app.use("/", express.static(path.join(__dirname, "../dist/nodebucket")));
 const PORT = process.env.PORT || 3000;
 
 // TODO: This line will be replaced with your database connection string (including username/password).
-const CONN =
-  "mongodb+srv://nodebucket_user:s3cret@cluster0.vvn3y4f.mongodb.net/nodebucket?retryWrites=true&w=majority";
+const CONN = config.dbConn;
+
+/**
+ * (node:26148) [MONGOOSE] DeprecationWarning: Mongoose: the
+`strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change.
+ */
+mongoose.set("strictQuery", false);
 
 /**
  * Database connection.
@@ -40,8 +46,16 @@ mongoose
     console.log("Connection to the database was successful");
   })
   .catch((err) => {
-    console.log("MongoDB Error: " + err.message);
+    console.log("MongoDB Server Error: " + err.message);
   });
+
+mongoose.connection.on("error", (err) => {
+  console.log(config.mongoServerError + ": " + err.message);
+});
+
+mongoose.connection.on("disconnected", () => {
+  console.log("Server disconnected from host (MongoDB Atlas).");
+});
 
 /**
  * APIS go here

@@ -8,6 +8,7 @@
 
 const express = require("express");
 const Employee = require("../models/employee");
+const config = require("../data/config.json");
 
 const router = express.Router();
 
@@ -46,7 +47,7 @@ router.get("/:empId", async (req, res) => {
       if (err) {
         console.log(err);
         res.status(501).send({
-          err: "MongoDB server error: " + err.message,
+          err: config.mongoServerError + ": " + err.message,
         });
         /**
          * If there is no error, return the emp object from MongoDB
@@ -59,7 +60,7 @@ router.get("/:empId", async (req, res) => {
   } catch (e) {
     console.log(e);
     res.status(500).send({
-      err: "Internal server error!",
+      err: config.serverError + ": " + e.message,
     });
   }
 });
