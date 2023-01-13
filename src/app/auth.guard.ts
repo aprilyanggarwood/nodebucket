@@ -1,8 +1,17 @@
+/*
+Title: auth.guard.ts
+Author: Professor Krasso
+Date: 01/03/2023
+Modified By: April Yang
+Description: Use cookie service to guard user login
+*/
+
+
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
-import { Router } from 'express';
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +29,7 @@ export class AuthGuard implements CanActivate {
     if (sessionUser) {
       return true;
     } else {
-     (<any>this.router).navigate(['/session/login']);
+      this.router.navigate(['/session/login']);
       return false;
     }
   }

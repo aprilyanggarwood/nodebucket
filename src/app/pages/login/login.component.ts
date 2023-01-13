@@ -1,3 +1,12 @@
+/*
+ Title: login.component.ts
+ Author: Professor Krasso
+ Date: 01/12/2023
+ Modified By: April Yang
+ Description: Login page component
+ */
+
+
 import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
