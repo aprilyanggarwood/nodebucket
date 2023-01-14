@@ -8,25 +8,25 @@ Description: Login page template
 
 <div fxLayout="column">
   <mat-card fxFlex class="login-container">
-    <mat-card-header>
+    <mat-card-header style="justify-content: center">
       <mat-card-title class="login-title">
         Employee Sign-in Page
       </mat-card-title>
-      <mat-card-subtitle>
+      <mat-card-subtitle class="login-subtitle">
         You must enter a valid employee ID to continue
       </mat-card-subtitle>
     </mat-card-header>
 
-    <mat-card-content>
+    <mat-card-content class="empidContent">
       <p-messages
         [(value)]="errorMessages"
         [enableService]="false"
       ></p-messages>
 
-      <mat-card>
+      <mat-card class="empCard">
         <form [formGroup]="loginForm" (ngSubmit)="login(); loginForm.reset()">
           <mat-card-content>
-            <mat-form-field>
+            <mat-form-field class="formField">
               <input
                 type="text"
                 matInput
@@ -53,13 +53,12 @@ Description: Login page template
             </mat-form-field>
           </mat-card-content>
 
-          <mat-card-actions>
+          <mat-card-actions class="buttonSize">
             <button
               type="submit"
               fxFlex
               mat-raised-button
-              color="primary"
-              style="height: 50px; font-size: 18px"
+              class="loginB"
               [disabled]="!loginForm.valid"
             >
               Log in

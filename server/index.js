@@ -69,7 +69,7 @@ const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Web 450 NodeBucket",
+      title: "WEB450 nodebucket",
       version: "1.0.0",
     },
   },
