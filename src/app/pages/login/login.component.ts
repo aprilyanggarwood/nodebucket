@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   employee: Employee;
 
   loginForm: FormGroup = this.fb.group({
-    empId: [null, Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]
+    empId: [null, Validators.compose([Validators.required, Validators.pattern('[0-9]*$')])]
   })
 
 

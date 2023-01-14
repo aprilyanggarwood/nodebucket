@@ -17,6 +17,9 @@ const config = require("./data/config.json");
 
 const app = express(); // Express variable.
 
+const swaggerUi = require("swagger-ui-express");
+const swaggerJsdoc = require("swagger-jsdoc");
+
 /**
  * App configurations.
  */
@@ -32,9 +35,8 @@ const PORT = process.env.PORT || 3000;
 const CONN = config.dbConn;
 
 /**
- * fixed DeprecationWarning
- * (node:26148) [MONGOOSE] DeprecationWarning: Mongoose: the
-`strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change.
+ * fixed Mongoose DeprecationWarning:
+ * Switched `strictQuery` back to `false` by default in Mongoose 7.
  */
 mongoose.set("strictQuery", false);
 
@@ -61,6 +63,24 @@ mongoose.connection.on("disconnected", () => {
 /**
  * APIS go here
  */
+
+/* define an variable object named options for configuring swagger UI */
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Web 450 NodeBucket",
+      version: "1.0.0",
+    },
+  },
+  apis: ["./server/routes/employee-api.js"], // files containing annotations for the OpenAPI Specification
+};
+
+/* call the swaggerJsdoc library using the options object literal. */
+const openapiSpecification = swaggerJsdoc(options);
+/* wire the openapiSpecification variable to the app variable. Configure express to use /api-docs route to serve swaggerJsdoc  */
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification)); // http://localhost:3000/api-docs
 
 app.use("/api/employees", EmployeeAPI); // localhost:3000/api/employees/:empId
 

@@ -1,10 +1,4 @@
-/*
- Title: config.json
- Author: Professor Krasso
- Date: 01/12/2023
- Modified By: April Yang
- Description: Keeping sensitive info and reusable info
- */
+
 
 {
   "dbConn": "mongodb+srv://nodebucket_user:s3cret@cluster0.vvn3y4f.mongodb.net/nodebucket?retryWrites=true&w=majority",
