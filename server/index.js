@@ -12,11 +12,15 @@ Description: App Server File
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+
+// import employee API
 const EmployeeAPI = require("./routes/employee-api");
+// import MongoDB database connection string from config.json
 const config = require("./data/config.json");
 
 const app = express(); // Express variable.
 
+// import swagger
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
 
@@ -31,7 +35,7 @@ app.use("/", express.static(path.join(__dirname, "../dist/nodebucket")));
 // default server port value.
 const PORT = process.env.PORT || 3000;
 
-// TODO: This line will be replaced with your database connection string (including username/password).
+// Define MongoDB database connection string from config.json
 const CONN = config.dbConn;
 
 /**
@@ -79,10 +83,9 @@ const options = {
 /* call the swaggerJsdoc library using the options object literal. */
 const openapiSpecification = swaggerJsdoc(options);
 /* wire the openapiSpecification variable to the app variable. Configure express to use /api-docs route to serve swaggerJsdoc  */
-
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification)); // http://localhost:3000/api-docs
-
-app.use("/api/employees", EmployeeAPI); // localhost:3000/api/employees/:empId
+// localhost:3000/api/employees/:empId
+app.use("/api/employees", EmployeeAPI);
 
 // Wire-up the Express server.
 app.listen(PORT, () => {

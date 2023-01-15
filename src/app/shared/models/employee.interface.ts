@@ -3,7 +3,7 @@ Title: employee.interface.ts
 Author: Professor Krasso
 Date: 01/12/2023
 Modified By: April Yang
-Description: Set model for employee interface
+Description: Create model for employee interface
 */
 
 
