@@ -11,6 +11,7 @@ const express = require("express");
 const Employee = require("../models/employee");
 // import reuseable error messages from config.json
 const config = require("../data/config.json");
+const { update } = require("../models/employee");
 
 const router = express.Router();
 
@@ -60,6 +61,79 @@ router.get("/:empId", async (req, res) => {
     // if there is a server error, handle it and return a 500 error message
     console.log(e);
     res.status(500).send({
+      err: config.serverError + ": " + e.message,
+    });
+  }
+});
+
+/**
+ * findAllTasks
+ */
+router.get("/:empId/tasks", async (req, res) => {
+  try {
+    Employee.findOne(
+      { empId: req.params.empId },
+      "empId todo done",
+      function (err, emp) {
+        if (err) {
+          console.log(err);
+          res.status(501).send({
+            err: config.mongoServerError + ": " + err.message,
+          });
+        } else {
+          console.log(emp);
+          res.json(emp);
+        }
+      }
+    );
+  } catch (e) {
+    console.log(e);
+    res.status({
+      err: config.serverError + ": " + e.message,
+    });
+  }
+});
+
+/**
+ * createTask
+ */
+router.post("/:empId/tasks", async (req, res) => {
+  try {
+    Employee.findOne(
+      { empId: req.params.empId },
+      "empId todo done",
+      function (err, emp) {
+        if (err) {
+          console.log(err);
+          res.status(501).send({
+            err: config.mongoServerError + ": " + err.message,
+          });
+        } else {
+          console.log(emp);
+
+          const newTask = {
+            text: req.body.text,
+          };
+
+          emp.todo.push(newTask);
+
+          emp.save(function (err, updatedEmp) {
+            if (err) {
+              console.log(err);
+              res.status(501).send({
+                err: config.mongoServerError + ": " + err.message,
+              });
+            } else {
+              console.log(updatedEmp);
+              res.json(updatedEmp);
+            }
+          });
+        }
+      }
+    );
+  } catch (e) {
+    console.log(e);
+    res.status({
       err: config.serverError + ": " + e.message,
     });
   }

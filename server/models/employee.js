@@ -9,6 +9,7 @@
 // import
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const itemSchema = require("./item");
 
 // create the model of employeeSchema to use with mongoose
 let employeeSchema = new Schema(
@@ -16,6 +17,9 @@ let employeeSchema = new Schema(
     empId: { type: Number, unique: true, require: true },
     firstName: { type: String },
     lastName: { type: String },
+    // employee has many todo and done tasks
+    todo: [itemSchema],
+    done: [itemSchema],
   },
   { collection: "employees" } // pre-build collection in mongodb atlas
 );
