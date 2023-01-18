@@ -11,7 +11,6 @@ const express = require("express");
 const Employee = require("../models/employee");
 // import reuseable error messages from config.json
 const config = require("../data/config.json");
-const { update } = require("../models/employee");
 
 const router = express.Router();
 
