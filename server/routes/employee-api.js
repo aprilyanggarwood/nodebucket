@@ -111,23 +111,40 @@ router.post("/:empId/tasks", async (req, res) => {
         } else {
           console.log(emp);
 
-          const newTask = {
-            text: req.body.text,
-          };
+          /**
+           * If the response is not null (a.k.a. emp)
+           * Add the newTask
+           */
 
-          emp.todo.push(newTask);
+          if (emp) {
+            const newTask = {
+              text: req.body.text,
+            };
 
-          emp.save(function (err, updatedEmp) {
-            if (err) {
-              console.log(err);
-              res.status(501).send({
-                err: config.mongoServerError + ": " + err.message,
-              });
-            } else {
-              console.log(updatedEmp);
-              res.json(updatedEmp);
-            }
-          });
+            emp.todo.push(newTask);
+
+            emp.save(function (err, updatedEmp) {
+              if (err) {
+                console.log(err);
+                res.status(501).send({
+                  err: config.mongoServerError + ": " + err.message,
+                });
+              } else {
+                console.log(updatedEmp);
+                res.json(updatedEmp);
+              }
+            });
+          } else {
+            /**
+             * If the response (a.k.a emp is null)
+             */
+            res.status(401).send({
+              err:
+                "EmployeeId: " +
+                req.params.empId +
+                " does not belong to registered user.",
+            });
+          }
         }
       }
     );
