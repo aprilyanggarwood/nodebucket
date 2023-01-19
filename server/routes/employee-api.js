@@ -11,6 +11,8 @@ const express = require("express");
 const Employee = require("../models/employee");
 // import reuseable error messages from config.json
 const config = require("../data/config.json");
+// building reusable APIs
+const BaseResponse = require("../models/base-response");
 
 const router = express.Router();
 
@@ -46,22 +48,49 @@ router.get("/:empId", async (req, res) => {
     Employee.findOne({ empId: req.params.empId }, function (err, emp) {
       // if there is a mongodb error, handle it and return a 501 error message
       if (err) {
-        console.log(err);
+        const findEmployeeByIdMongoDBErrorResponse = new BaseResponse(
+          501,
+          `${config.mongoServerError}:${err.message}`,
+          null
+        );
+
+        console.log(findEmployeeByIdMongoDBErrorResponse.toObject());
+        res.status(501).send(findEmployeeByIdMongoDBErrorResponse.toObject());
+
+        /*console.log(err);
         res.status(501).send({
           err: config.mongoServerError + ": " + err.message,
-        });
+        });*/
+
         // If there is no error, return the emp object from MongoDB
       } else {
-        console.log(emp);
-        res.json(emp); // returns the data as JSON
+        const findEmployeeByIdResponse = new BaseResponse(
+          200,
+          `findAll query was successful.`,
+          emp
+        );
+        console.log(findEmployeeByIdResponse.toObject());
+        res.json(findEmployeeByIdResponse.toObject());
+
+        // console.log(emp);
+        // res.json(emp); // returns the data as JSON
       }
     });
   } catch (e) {
+    const errorResponse = new BaseResponse(
+      500,
+      `${config.serverError}:${err.message}`,
+      null
+    );
+    console.log(errorResponse.toObject());
+    res.status(500).send(errorResponse.toObject());
+
     // if there is a server error, handle it and return a 500 error message
+    /*
     console.log(e);
     res.status(500).send({
       err: config.serverError + ": " + e.message,
-    });
+    }); */
   }
 });
 
@@ -178,7 +207,6 @@ router.post("/:empId/tasks", async (req, res) => {
          * If the response is not null (a.k.a. emp)
          * Add the newTask
          */
-
         if (emp) {
           // if employee creates a new task
           const newTask = {
@@ -188,7 +216,7 @@ router.post("/:empId/tasks", async (req, res) => {
           // push the new task to the employee's todo list
           emp.todo.push(newTask);
 
-          // updates employee with the saved new task
+          // updates employee with the saved new to do task
           emp.save(function (err, updatedEmp) {
             if (err) {
               console.log(err);
