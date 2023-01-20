@@ -53,8 +53,11 @@ export class LoginComponent implements OnInit {
     // use cookie service to remember user id and name
     this.employeeService.findEmployeeById(empId).subscribe({
       next: (res) => {
-        if (res) {
-          this.employee = res;
+        if (res.data) {
+          console.log('this is the response from the findEmployeeById API');
+          console.log(res.data);
+
+          this.employee = res.data;
           this.cookieService.set('session_user', this.employee.empId.toString(), 1); // convert employee id to string
           this.cookieService.set('session_name', `${this.employee.firstName} ${this.employee.lastName}`, 1);
           this.router.navigate(['/']) // navigate user to home page when user successful log in

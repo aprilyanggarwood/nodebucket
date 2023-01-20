@@ -10,7 +10,10 @@ Description: application layout template
   <!-- navigation -->
   <header>
     <nav fxFlex>
-      <mat-toolbar>
+      <mat-toolbar
+        style="border-bottom: 15px solid #d6a800; height: 100px"
+        color="primary"
+      >
         <!-- navbar container -->
         <div class="navbar-container">
           <!-- logo -->
@@ -18,14 +21,32 @@ Description: application layout template
 
           <button class="navbar-link" routerLink="/" mat-button>Home</button>
           <button class="navbar-link" mat-button>About</button>
-          <button class="navbar-link" mat-button>Contact Us</button>
+          <button class="navbar-link" routerLink="/contact" mat-button>
+            Contact Us
+          </button>
         </div>
 
         <div fxFlex></div>
-        <!-- logout user -->
-        <button (click)="logout()" mat-button class="navbar-link">
-          Log out
-        </button>
+
+        <!-- profile menu -->
+        <div>
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="profileMenu"
+            aria-label="User Profile menu"
+          >
+            <mat-icon>perm_identity</mat-icon>
+          </button>
+
+          <mat-menu #profileMenu>
+            <p>Signed in as {{ employeeName }}</p>
+            <mat-divider></mat-divider>
+            <!-- logout user -->
+            <button (click)="logout()" mat-button class="navbar-link">
+              Log out
+            </button>
+          </mat-menu>
+        </div>
       </mat-toolbar>
     </nav>
   </header>
