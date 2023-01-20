@@ -1,3 +1,12 @@
+/*
+ Title: base-response.js
+ Author: Professor Krasso
+ Date: 01/19/2023
+ Modified By: April Yang
+ Description: Request/ Response design pattern : Building reusable APIs
+ */
+
+// APIs naturally return data, status codes, and messages to the client
 class BaseResponse {
   constructor(httpCode, message, data) {
     this.httpCode = httpCode;
@@ -5,6 +14,7 @@ class BaseResponse {
     this.data = data;
   }
 
+  // Response object: responsible for sending an standard object to all calling clients.
   toObject() {
     return {
       httpCode: this.httpCode,
@@ -15,4 +25,5 @@ class BaseResponse {
   }
 }
 
+// exports BaseResponse
 module.exports = BaseResponse;

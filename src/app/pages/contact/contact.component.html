@@ -1,1 +1,57 @@
-<p>contact works!</p>
+<!--
+Title: contact.component.html
+Author: Professor Krasso
+Date: 01/19/2023
+Modified By: April Yang
+Description: Contact page template
+-->
+
+<div>
+  <h1
+    style="
+      text-align: center;
+      margin-top: -30px;
+      margin-bottom: 30px;
+      color: #eeba30;
+      font-weight: bold;
+    "
+  >
+    {{ contactUs }}
+  </h1>
+</div>
+
+<div fxLayout="row wrap">
+  <div fxFlex>
+    <div fxFlex="row" style="text-align: center">
+      <mat-card-content class="card-title-icon">
+        <mat-icon color="primary">navigation</mat-icon>
+      </mat-card-content>
+      <br />
+      <mat-card-content>
+        <p>99909 56th Avenue NE</p>
+        <p>Olympia, WA</p>
+      </mat-card-content>
+    </div>
+  </div>
+
+  <div fxFlex>
+    <div fxFlex="row" style="text-align: center">
+      <mat-card-title class="card-title-icon">
+        <mat-icon color="primary">phone</mat-icon>
+      </mat-card-title>
+      <br />
+      <mat-card-content class="align-center">
+        <p>Direct: 855-666-7777</p>
+        <p>Toll-free: 1-855-666-8888</p>
+        <p>Fax: 855-666-9999</p>
+      </mat-card-content>
+    </div>
+  </div>
+</div>
+
+<br /><br /><br /><br />
+<div fxLayout="column">
+  <p style="text-align: center">
+    Need more help？Our knowledgeable agents will help you!
+  </p>
+</div>

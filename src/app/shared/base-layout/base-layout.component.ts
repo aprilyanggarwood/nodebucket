@@ -6,7 +6,7 @@ Modified By: April Yang
 Description: application layout component
 */
 
-
+// import
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
@@ -21,6 +21,7 @@ export class BaseLayoutComponent implements OnInit {
   year: number = Date.now();
 
   constructor(private cookieService: CookieService, private router: Router) {
+     // from login component
     this.employeeName = this.cookieService.get('session_name');
     this.year = Date.now();
   }

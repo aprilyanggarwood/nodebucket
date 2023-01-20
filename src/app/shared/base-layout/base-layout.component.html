@@ -1,7 +1,7 @@
 <!--
 Title: base-layout.component.html
 Author: Professor Krasso
-Date: 01/03/2023
+Updated Date: 01/19/2023
 Modified By: April Yang
 Description: application layout template
 -->
@@ -30,6 +30,7 @@ Description: application layout template
 
         <!-- profile menu -->
         <div>
+          <!-- user profile icon button  -->
           <button
             mat-icon-button
             [matMenuTriggerFor]="profileMenu"
@@ -39,6 +40,7 @@ Description: application layout template
           </button>
 
           <mat-menu #profileMenu>
+            <!-- displays user's name when log in  -->
             <p>Signed in as {{ employeeName }}</p>
             <mat-divider></mat-divider>
             <!-- logout user -->

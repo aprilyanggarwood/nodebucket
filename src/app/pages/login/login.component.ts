@@ -26,7 +26,7 @@ import { Employee } from 'src/app/shared/models/employee.interface';
 export class LoginComponent implements OnInit {
 
   // initial the array of error messages to empty
-  errorMessages: Message[] = [];
+  errorMessages: Message[] = [];  // ?
   // assigns the employee variable to Employee schema
   employee: Employee;
 
@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
           console.log(res.data);
 
           this.employee = res.data;
+          // 'session_user' and 'session_name' from auth.guard.ts
           this.cookieService.set('session_user', this.employee.empId.toString(), 1); // convert employee id to string
           this.cookieService.set('session_name', `${this.employee.firstName} ${this.employee.lastName}`, 1);
           this.router.navigate(['/']) // navigate user to home page when user successful log in
