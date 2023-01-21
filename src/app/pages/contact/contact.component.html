@@ -6,52 +6,61 @@ Modified By: April Yang
 Description: Contact page template
 -->
 
-<div>
-  <h1
-    style="
-      text-align: center;
-      margin-top: -30px;
-      margin-bottom: 30px;
-      color: #eeba30;
-      font-weight: bold;
-    "
-  >
-    {{ contactUs }}
-  </h1>
-</div>
-
-<div fxLayout="row wrap">
+<!-- main container-->
+<div fxLayout="column" class="main-welcome">
   <div fxFlex>
-    <div fxFlex="row" style="text-align: center">
-      <mat-card-content class="card-title-icon">
-        <mat-icon color="primary">navigation</mat-icon>
-      </mat-card-content>
-      <br />
-      <mat-card-content>
-        <p>99909 56th Avenue NE</p>
-        <p>Olympia, WA</p>
-      </mat-card-content>
+    <h1
+      style="
+        text-align: center;
+        margin-top: 60px;
+        margin-bottom: 50px;
+        font-weight: bold;
+        font-family: Inter;
+      "
+    >
+      {{ contactUs }}
+    </h1>
+  </div>
+  <!-- row with two cards  -->
+  <div fxLayout="row wrap" style="margin-left: 12%">
+    <div fxFlex>
+      <div fxFlex="row" style="text-align: center">
+        <!-- left card -->
+        <mat-card class="addressCard">
+          <mat-card-content class="card-title-icon">
+            <mat-icon color="primary">navigation</mat-icon>
+          </mat-card-content>
+          <br />
+          <mat-card-content>
+            <p>99909 56th Avenue NE</p>
+            <p>Olympia, WA</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <div fxFlex>
+      <div fxFlex="row" style="text-align: center">
+        <!-- right card -->
+        <mat-card class="phoneCard">
+          <mat-card-title class="card-title-icon">
+            <mat-icon color="primary">phone</mat-icon>
+          </mat-card-title>
+          <br />
+          <mat-card-content class="align-center">
+            <p>Direct: 855-666-7777</p>
+            <p>Toll-free: 1-855-666-8888</p>
+            <p>Fax: 855-666-9999</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
   </div>
 
-  <div fxFlex>
-    <div fxFlex="row" style="text-align: center">
-      <mat-card-title class="card-title-icon">
-        <mat-icon color="primary">phone</mat-icon>
-      </mat-card-title>
-      <br />
-      <mat-card-content class="align-center">
-        <p>Direct: 855-666-7777</p>
-        <p>Toll-free: 1-855-666-8888</p>
-        <p>Fax: 855-666-9999</p>
-      </mat-card-content>
-    </div>
+  <br /><br /><br /><br />
+  <div fxLayout="column">
+    <p style="text-align: center; font-family: Inter">
+      Need more help？Our knowledgeable agents will help you!
+    </p>
   </div>
-</div>
-
-<br /><br /><br /><br />
-<div fxLayout="column">
-  <p style="text-align: center">
-    Need more help？Our knowledgeable agents will help you!
-  </p>
 </div>

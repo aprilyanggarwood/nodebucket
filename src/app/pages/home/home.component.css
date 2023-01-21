@@ -14,11 +14,13 @@ Description: styling for home page
 .title {
   text-align: center;
   font-weight: lighter;
+  font-family: Inter;
 }
 
 .subtitle {
   text-align: center;
   font-size: 14px;
+  font-family: Inter;
 }
 
 .task-container{
@@ -48,3 +50,7 @@ Description: styling for home page
 }
 
 
+.formField{
+  width: 100%;
+  font-family: Inter;
+}

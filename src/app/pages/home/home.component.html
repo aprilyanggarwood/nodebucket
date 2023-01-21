@@ -29,7 +29,7 @@ Description: Home page template
           (ngSubmit)="createTask(); taskForm.reset()"
         >
           <mat-card-content>
-            <mat-form-field appearance="fill" class="w-100">
+            <mat-form-field appearance="fill" class="formField">
               <input
                 type="text"
                 matInput
@@ -86,7 +86,7 @@ Description: Home page template
   </div>
   <!-- end create task input form-->
   <!-- list of tasks, to do list-->
-  <div fxFlex>
+  <div fxFlex style="margin-bottom: 100px">
     <div
       fxLayout="row"
       fxLayoutGap="15px"
@@ -96,7 +96,9 @@ Description: Home page template
       <!-- todo column-->
       <div fxFlex>
         <mat-card class="mat-elevation-z0">
-          <mat-card-title>ToDo</mat-card-title>
+          <mat-card-title style="font-family: Inter; font-weight: bold"
+            >ToDo</mat-card-title
+          >
           <mat-card-content>
             <div class="task-column">
               <!-- For loop to do items and display them in a column -->
@@ -105,7 +107,7 @@ Description: Home page template
                   <mat-card-content>
                     <div fxLayout="row">
                       <!-- text value-->
-                      <div fxFlex>
+                      <div fxFlex style="font-family: Inter">
                         {{ item.text }}
                       </div>
 
@@ -122,14 +124,16 @@ Description: Home page template
       <!-- list of done tasks-->
       <div fxFlex>
         <mat-card class="mat-elevation-z0">
-          <mat-card-title>Done</mat-card-title>
+          <mat-card-title style="font-family: Inter; font-weight: bold"
+            >Done</mat-card-title
+          >
           <mat-card-content>
             <div class="task-column">
               <!-- For loop done items and display them in a column -->
               <div *ngFor="let item of done">
                 <mat-card class="mat-elevation-z0 task-card">
                   <div fxLayout="row">
-                    <div fxFlex>
+                    <div fxFlex style="font-family: Inter">
                       {{ item.text }}
                     </div>
                   </div>

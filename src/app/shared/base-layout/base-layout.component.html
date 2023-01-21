@@ -11,7 +11,11 @@ Description: application layout template
   <header>
     <nav fxFlex>
       <mat-toolbar
-        style="border-bottom: 15px solid #d6a800; height: 100px"
+        style="
+          border-bottom: 15px solid #d3a625;
+          height: 100px;
+          background-color: #740001;
+        "
         color="primary"
       >
         <!-- navbar container -->
@@ -36,15 +40,15 @@ Description: application layout template
             [matMenuTriggerFor]="profileMenu"
             aria-label="User Profile menu"
           >
-            <mat-icon>perm_identity</mat-icon>
+            <mat-icon class="profileMenu">perm_identity</mat-icon>
           </button>
 
           <mat-menu #profileMenu>
             <!-- displays user's name when log in  -->
-            <p>Signed in as {{ employeeName }}</p>
+            <p class="empName">{{ employeeName }}</p>
             <mat-divider></mat-divider>
             <!-- logout user -->
-            <button (click)="logout()" mat-button class="navbar-link">
+            <button (click)="logout()" mat-button class="logout-link">
               Log out
             </button>
           </mat-menu>
