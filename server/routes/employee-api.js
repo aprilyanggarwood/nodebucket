@@ -251,10 +251,53 @@ router.post("/:empId/tasks", async (req, res) => {
   }
 });
 
+// updateTasksByEmpId
 /**
- * updateTask
+ * @openapi
+ *
+ * /api/employees/{empId}/tasks:
+ *   put:
+ *     tags:
+ *       - Employees
+ *     description: Finds an employee by Id and update this employee's to do list or done list
+ *     summary: updates a task for an empId
+ *     operationId: updateTasksByEmpId
+ *     parameters:
+ *       - name: empId
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: number
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - todo
+ *               - done
+ *             properties:
+ *               todo:
+ *                 type: array
+ *               done:
+ *                 type: array
+ *     responses:
+ *       '200':
+ *         description: A task gets updated
+ *       '401':
+ *         description: Invalid empId
+ *       '500':
+ *         description: Server Exception
+ *       '501':
+ *         description: MongoDB Exception
  */
 router.put("/:empId/tasks", async (req, res) => {
+  /**
+   * find one employee by id
+   * return an error message if something wrong with mongo server
+   * otherwise return one employee
+   */
   try {
     Employee.findOne({ empId: req.params.empId }, function (err, emp) {
       if (err) {
@@ -265,6 +308,11 @@ router.put("/:empId/tasks", async (req, res) => {
       } else {
         console.log(emp);
 
+        /**
+         * update employees's todo and done items
+         * return an error message if something wrong with mongo server
+         * otherwise return updated employee's todo and done list array
+         */
         if (emp) {
           emp.set({
             todo: req.body.todo,
@@ -286,6 +334,10 @@ router.put("/:empId/tasks", async (req, res) => {
           console.log(
             "no employee matching the passed-in empId: " + req.params.empId
           );
+          /**
+           * If the response (a.k.a emp is null)
+           * send 401 error message
+           */
           res.status(401).send({
             err:
               "EmployeeId: " +
@@ -297,14 +349,51 @@ router.put("/:empId/tasks", async (req, res) => {
     });
   } catch (e) {
     console.log(e);
+    // internal Server Error
     res.status(500).send({
       err: "Internal server error: " + e.message,
     });
   }
 });
 
+// deleteTaskByEmpId
+/**
+ * @openapi
+ * /api/employees/{empId}/tasks/{taskId}:
+ *   delete:
+ *     tags:
+ *       - Employees
+ *     description: Finds an employee by empId and delete one task by taskId from this employee's to do list or done list
+ *     summary: deletes a taskId for an empId
+ *     operationId: deleteTaskByEmpId
+ *     parameters:
+ *       - name: empId
+ *         in: path
+ *         required: true
+ *         scheme:
+ *           type: number
+ *       - name: taskId
+ *         in: path
+ *         required: true
+ *         scheme:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: A task gets deleted
+ *       '401':
+ *          description: Invalid empId or taskId
+ *       '500':
+ *         description: Server Exception
+ *       '501':
+ *         description: MongoDB Exception
+ */
 router.delete("/:empId/tasks/:taskId", async (req, res) => {
   try {
+    /**
+     * find one employee by id
+     * return an error message if something wrong with mongo server
+     * otherwise return one employee
+     */
     Employee.findOne({ empId: req.params.empId }, function (err, emp) {
       if (err) {
         console.log(err);
@@ -313,16 +402,26 @@ router.delete("/:empId/tasks/:taskId", async (req, res) => {
         });
       } else {
         console.log(emp);
+        /**
+         * delete an employee's todo task or done task by taskId
+         * return an error message if something wrong with mongo server
+         * otherwise return updated employee's todo and done list array
+         */
         if (emp) {
+          // set up taskId as a required parameter to variable taskId
           const taskId = req.params.taskId;
-
+          // find one todo item or done item by item._id
+          // item._id.toString() equal to taskId string
           const todoItem = emp.todo.find(
             (item) => item._id.toString() === taskId
           );
           const doneItem = emp.done.find(
             (item) => item._id.toString() === taskId
           );
+          /**
+           * if find a task in the todo list array , delete it from array and update array database
 
+           */
           if (todoItem) {
             emp.todo.id(todoItem._id).remove();
 
@@ -338,6 +437,10 @@ router.delete("/:empId/tasks/:taskId", async (req, res) => {
               }
             });
           } else if (doneItem) {
+            /**
+             * if find a task in the done list array, delete it from array and update array database
+             * return an error message if something wrong with mongo server
+             */
             emp.done.id(doneItem._id).remove();
 
             emp.save(function (err, updatedDoneItemEmp) {
@@ -352,6 +455,10 @@ router.delete("/:empId/tasks/:taskId", async (req, res) => {
               }
             });
           } else {
+            /**
+             * If the response (a.k.a taskId is null)
+             * send 401 error message
+             */
             console.log("Invalid taskId: " + taskId);
             res.status(401).send({
               err: "Invalid taskId: " + taskId,
@@ -361,6 +468,10 @@ router.delete("/:empId/tasks/:taskId", async (req, res) => {
           console.log(
             "no employee matching the passed- in empId: " + req.params.empId
           );
+          /**
+           * If the response (a.k.a emp is null)
+           * send 401 error message
+           */
           res.status(401).send({
             err:
               "EmployeeId: " +
@@ -376,5 +487,7 @@ router.delete("/:empId/tasks/:taskId", async (req, res) => {
       err: "MongoDB server error: " + err.message,
     });
   }
-}),
-  (module.exports = router);
+});
+
+// exports the module
+module.exports = router;
