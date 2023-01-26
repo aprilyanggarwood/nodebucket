@@ -1,0 +1,33 @@
+<!--
+Title: not-found.component.html
+Author: Professor Krasso
+Date: 01/26/2023
+Modified By: April Yang
+Description: Not found page template
+-->
+
+<!-- Angular flex layout -->
+<div fxLayout="column">
+  <!-- Begin not-found container -->
+  <mat-card class="notFoundCard">
+    <mat-card-title>
+      <h1 class="error404">ERROR 404</h1>
+    </mat-card-title>
+    <mat-card-content>
+      <div>
+        <img
+          class="notFoundImg"
+          src="../../../assets/small-van.jpg"
+          alt="notFound"
+        />
+        <span>
+          <!-- Return link to login page -->
+          <a class="returnLink" href=" " routerLink="/">Return</a>
+        </span>
+      </div>
+      <br />
+      <h1 class="pageNotFound">Page Not Found</h1>
+    </mat-card-content>
+  </mat-card>
+  <!-- End not-found container -->
+</div>

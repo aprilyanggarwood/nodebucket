@@ -32,6 +32,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContactComponent } from './pages/contact/contact.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AboutComponent } from './pages/about/about.component';
 
 
 
@@ -42,7 +44,9 @@ import { ContactComponent } from './pages/contact/contact.component';
     AuthLayoutComponent,
     BaseLayoutComponent,
     LoginComponent,
-    ContactComponent
+    ContactComponent,
+    NotFoundComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

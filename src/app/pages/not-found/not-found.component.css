@@ -1,0 +1,55 @@
+/*
+ Title: not-found.component.css
+ Author: Professor Krasso
+ Date: 01/26/2023
+ Modified By: April Yang
+ Description: Styling not-found page
+ */
+
+
+.notFoundCard {
+  width: 60%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #e0e0e0;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.error404{
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  text-align: center;
+  font-family: Inter;
+  color: #d3a625;
+}
+
+.notFoundImg{
+  width: 550px;
+  height: 350px;
+  border-radius: 50%;
+  border: 8px solid #d3a625;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+.returnLink{
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
+  text-decoration: none;
+  font-family: Inter;
+  font-size: large;
+  color: #d3a625;
+  text-align: center;
+  padding-left: 70%;
+}
+
+.pageNotFound{
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  text-align: center;
+  font-family: Inter;
+  color: #d3a625;
+
+}

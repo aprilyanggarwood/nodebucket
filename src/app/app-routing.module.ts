@@ -16,6 +16,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { AuthGuard } from './auth.guard';
 import { ContactComponent } from './pages/contact/contact.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -42,8 +43,16 @@ const routes: Routes = [
       {
         path: 'login',
         component:LoginComponent
+      },
+      {
+        path: 'not-found',
+        component: NotFoundComponent
       }
     ]
+  },
+  {
+    path: '**',
+    redirectTo: 'session/not-found'
   }
 ];
 
