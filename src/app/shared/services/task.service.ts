@@ -31,6 +31,7 @@ export class TaskService {
   }
 
 
+  // update user's todo and done task items
   updateTask(empId: number, todo: Item[], done:Item[]): Observable<any> {
     return this.http.put('/api/employees/' + empId + '/tasks', {
       todo,
@@ -38,7 +39,7 @@ export class TaskService {
     })
   }
 
-// taskId: string
+// delete a task by empId and taskId
   deleteTask(empId: number, taskId: string): Observable<any>{
     return this.http.delete('/api/employees/' + empId + '/tasks/' + taskId)
 

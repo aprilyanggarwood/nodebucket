@@ -52,7 +52,7 @@ const routes: Routes = [
         component:LoginComponent
       },
       {
-        path: 'not-found',
+        path: 'not-found', // 404 error page
         component: NotFoundComponent
       }
     ]

@@ -1,10 +1,9 @@
 <!--
- Title: about.component.html
- Author: Professor Krasso
- Modified By: April Yang
- Date: 12/15/2022
- Description: Assignment 9.2 - Capstone (Delivery)
-Resources: Material Design https://material.io
+Title: about.component.html
+Author: Professor Krasso
+Date: 01/27/2023
+Modified By: April Yang
+Description: About page template
 -->
 
 <div>
@@ -24,58 +23,22 @@ Resources: Material Design https://material.io
 <!-- 2 column material design layout -->
 <div fxLayout="row wrap" style="margin-bottom: 100px">
   <div fxFlex>
+    <!-- left column -->
     <div fxLayout="column" style="text-align: center">
       <div>
         <img
-          style="
-            max-width: 350px;
-            border-radius: 15%;
-            border: 8px solid white;
-            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 10));
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 50px;
-          "
+          class="aboutUsImg"
           src="../../../assets/small-van.jpg"
-          alt=""
+          alt="aboutUsImg"
         />
       </div>
-      <!-- <div>
-        <em>
-          Photo from Wikipedia
-          <a
-            class="attribution-link"
-            href="https://upload.wikimedia.org/wikipedia/commons/c/cf/%E5%90%B4%E5%8F%B8%E9%A9%AC%E5%AD%99%E6%AD%A6.jpg"
-            target="_blank"
-            >Sun Tzu</a
-          >
-        </em>
-      </div> -->
     </div>
   </div>
-
+  <!-- right column -->
   <div fxFlex>
     <div fxLayout="column">
-      <h1
-        class="blue"
-        style="
-          text-align: center;
-          font-family: Inter;
-          color: #ae0001;
-          font-weight: bold;
-        "
-      >
-        nodeBucket
-      </h1>
-      <div
-        style="
-          text-align: left;
-          padding-right: 30px;
-          font-family: Inter;
-          font-size: medium;
-        "
-      >
+      <h1 class="appName">nodeBucket</h1>
+      <div class="aboutApp">
         <p>
           nodeBucket is a user- and mobile-friendly task management app from
           House Gryffindor that helps you manage your tasks anytime, anywhere.

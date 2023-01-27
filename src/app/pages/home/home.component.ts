@@ -1,7 +1,7 @@
 /*
  Title: home.component.ts
  Author: Professor Krasso
- Updated Date: 01/19/2023
+ Updated Date: 01/26/2023
  Modified By: April Yang
  Description: Home page component
  */
@@ -111,16 +111,20 @@ export class HomeComponent implements OnInit {
  }
 
 
+  // delete a task
+  // taskId refer to employee-api.js, const taskId = req.params.taskId;
   deleteTask(taskId: string) {
     // the interface model of header and content is from dialog-data.interface.ts
     this.dialogData.header = 'Delete Record Dialog';
     this.dialogData.content = 'Are you sure you want to delete this task?';
-
+    // Bring up dialogData from ConfirmDialogComponent when delete dialog open
+    // Prompt the user with a string to confirm the delete action
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: this.dialogData,
       disableClose: true
     })
 
+   // if user confirmed the deletion, data will be deleted from database
     dialogRef.afterClosed().subscribe({
       next: (result) => {
         console.log(result)
@@ -145,6 +149,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  // drag and drop function
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
 
@@ -162,13 +167,14 @@ export class HomeComponent implements OnInit {
         event.previousIndex,
         event.currentIndex)
 
-      // write the code to call the update API
+      // call updateTaskList function
       this.updateTaskList(this.empId, this.todo, this.done);
 
     }
   }
 
 
+  // updateTaskList function, make code cleaner and reuseable
   updateTaskList(empId: number, todo: Item[], done: Item[]) {
     this.taskService.updateTask(empId, todo, done).subscribe({
       next: (res) => {
@@ -183,7 +189,4 @@ export class HomeComponent implements OnInit {
         }
     })
   }
-
-
-
 }

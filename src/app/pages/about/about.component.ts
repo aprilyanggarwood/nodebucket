@@ -15,11 +15,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-
+// set variable aboutUs to type string
   aboutUs: string;
 
   constructor() {
-
+    // Define aboutUs to string About Us
     this.aboutUs = "About Us"
   }
 

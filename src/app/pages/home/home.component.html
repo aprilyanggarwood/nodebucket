@@ -1,7 +1,7 @@
 <!--
 Title: home.component.html
 Author: Professor Krasso
-Updated Date: 01/19/2023
+Updated Date: 01/26/2023
 Modified By: April Yang
 Description: Home page template
 -->
@@ -100,7 +100,7 @@ Description: Home page template
             >ToDo</mat-card-title
           >
           <mat-card-content>
-            <!-- ??? #todoList -->
+            <!-- cdkDropList, drag todo item and drop it to the done list -->
             <div
               fxLayout="column"
               fxLayoutGap="10px"
@@ -144,6 +144,7 @@ Description: Home page template
             >Done</mat-card-title
           >
           <mat-card-content>
+            <!-- cdkDropList, drag done item and drop it to the todo list -->
             <div
               fxLayout="column"
               fxLayoutGap="10px"

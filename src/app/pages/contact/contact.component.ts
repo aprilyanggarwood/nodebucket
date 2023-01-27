@@ -19,7 +19,7 @@ export class ContactComponent implements OnInit {
     contactUs: string;
 
   constructor() {
-    // Define contactUs to string Contact Us,
+    // Define contactUs to string Contact Us
     this.contactUs = "Contact Us"
    }
 
