@@ -17,6 +17,7 @@ import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component'
 import { AuthGuard } from './auth.guard';
 import { ContactComponent } from './pages/contact/contact.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AboutComponent } from './pages/about/about.component';
 
 
 const routes: Routes = [
@@ -33,8 +34,14 @@ const routes: Routes = [
         path: 'contact',
         component: ContactComponent,
         canActivate:[AuthGuard] // use auth guard
-      }
-    ]
+      },
+       {
+        path:'about',
+         component: AboutComponent,
+        canActivate:[AuthGuard] // use auth guard
+       }
+      ]
+    // ], canActivate: [AuthGuard]  //  can use it at end of ] for all children path need AuthGuard
   },
   {
     path: 'session',
@@ -52,7 +59,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'session/not-found'
+    redirectTo: 'session/not-found' // when user login with unidentified empId, page will redirect to not-found page.
   }
 ];
 

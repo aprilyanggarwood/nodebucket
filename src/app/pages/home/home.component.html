@@ -100,9 +100,18 @@ Description: Home page template
             >ToDo</mat-card-title
           >
           <mat-card-content>
-            <div class="task-column">
+            <div
+              fxLayout="column"
+              fxLayoutGap="10px"
+              class="task-column"
+              cdkDropList
+              #todoList="cdkDropList"
+              [cdkDropListData]="todo"
+              [cdkDropListConnectedTo]="[doneList]"
+              (cdkDropListDropped)="drop($event)"
+            >
               <!-- For loop to do items and display them in a column -->
-              <div *ngFor="let item of todo">
+              <div *ngFor="let item of todo" cdkDrag>
                 <mat-card class="mat-elevation-z0 task-card">
                   <mat-card-content>
                     <div fxLayout="row">
@@ -111,7 +120,12 @@ Description: Home page template
                         {{ item.text }}
                       </div>
 
-                      <!-- code to delete task-->
+                      <!-- code to delete todo task-->
+                      <div fxFlex fxLayoutAlign="end" style="margin-top: -7px">
+                        <button mat-icon-button (click)="deleteTask(item._id)">
+                          <mat-icon color="warn">delete</mat-icon>
+                        </button>
+                      </div>
                     </div>
                   </mat-card-content>
                 </mat-card>
@@ -128,13 +142,28 @@ Description: Home page template
             >Done</mat-card-title
           >
           <mat-card-content>
-            <div class="task-column">
+            <div
+              fxLayout="column"
+              fxLayoutGap="10px"
+              class="task-column"
+              cdkDropList
+              #doneList="cdkDropList"
+              [cdkDropListData]="done"
+              [cdkDropListConnectedTo]="[todoList]"
+              (cdkDropListDropped)="drop($event)"
+            >
               <!-- For loop done items and display them in a column -->
-              <div *ngFor="let item of done">
+              <div *ngFor="let item of done" cdkDrag>
                 <mat-card class="mat-elevation-z0 task-card">
                   <div fxLayout="row">
                     <div fxFlex style="font-family: Inter">
                       {{ item.text }}
+                    </div>
+                    <!-- code to delete done task-->
+                    <div fxFlex fxLayoutAlign="end" style="margin-top: -7px">
+                      <button mat-icon-button (click)="deleteTask(item._id)">
+                        <mat-icon color="warn">delete</mat-icon>
+                      </button>
                     </div>
                   </div>
                 </mat-card>

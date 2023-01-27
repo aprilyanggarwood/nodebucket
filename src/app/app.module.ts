@@ -34,6 +34,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContactComponent } from './pages/contact/contact.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AboutComponent } from './pages/about/about.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 
 
 
@@ -46,7 +49,8 @@ import { AboutComponent } from './pages/about/about.component';
     LoginComponent,
     ContactComponent,
     NotFoundComponent,
-    AboutComponent
+    AboutComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -65,8 +69,9 @@ import { AboutComponent } from './pages/about/about.component';
     MatMenuModule,
     MatDividerModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    MatDialogModule,
+    DragDropModule
 
   ],
   providers: [CookieService],
