@@ -100,6 +100,7 @@ Description: Home page template
             >ToDo</mat-card-title
           >
           <mat-card-content>
+            <!-- ??? #todoList -->
             <div
               fxLayout="column"
               fxLayoutGap="10px"
@@ -122,6 +123,7 @@ Description: Home page template
 
                       <!-- code to delete todo task-->
                       <div fxFlex fxLayoutAlign="end" style="margin-top: -7px">
+                        <!-- delete item._id from MongoDB database -->
                         <button mat-icon-button (click)="deleteTask(item._id)">
                           <mat-icon color="warn">delete</mat-icon>
                         </button>
@@ -161,6 +163,7 @@ Description: Home page template
                     </div>
                     <!-- code to delete done task-->
                     <div fxFlex fxLayoutAlign="end" style="margin-top: -7px">
+                      <!-- delete item._id from MongoDB database -->
                       <button mat-icon-button (click)="deleteTask(item._id)">
                         <mat-icon color="warn">delete</mat-icon>
                       </button>

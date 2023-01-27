@@ -1,1 +1,116 @@
-<p>about works!</p>
+<!--
+ Title: about.component.html
+ Author: Professor Krasso
+ Modified By: April Yang
+ Date: 12/15/2022
+ Description: Assignment 9.2 - Capstone (Delivery)
+Resources: Material Design https://material.io
+-->
+
+<div>
+  <h1
+    style="
+      text-align: center;
+      margin-top: 60px;
+      margin-bottom: 50px;
+      font-weight: bold;
+      font-family: Inter;
+    "
+  >
+    {{ aboutUs }}
+  </h1>
+</div>
+
+<!-- 2 column material design layout -->
+<div fxLayout="row wrap" style="margin-bottom: 100px">
+  <div fxFlex>
+    <div fxLayout="column" style="text-align: center">
+      <div>
+        <img
+          style="
+            max-width: 350px;
+            border-radius: 15%;
+            border: 8px solid white;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 10));
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+          "
+          src="../../../assets/small-van.jpg"
+          alt=""
+        />
+      </div>
+      <!-- <div>
+        <em>
+          Photo from Wikipedia
+          <a
+            class="attribution-link"
+            href="https://upload.wikimedia.org/wikipedia/commons/c/cf/%E5%90%B4%E5%8F%B8%E9%A9%AC%E5%AD%99%E6%AD%A6.jpg"
+            target="_blank"
+            >Sun Tzu</a
+          >
+        </em>
+      </div> -->
+    </div>
+  </div>
+
+  <div fxFlex>
+    <div fxLayout="column">
+      <h1
+        class="blue"
+        style="
+          text-align: center;
+          font-family: Inter;
+          color: #ae0001;
+          font-weight: bold;
+        "
+      >
+        nodeBucket
+      </h1>
+      <div
+        style="
+          text-align: left;
+          padding-right: 30px;
+          font-family: Inter;
+          font-size: medium;
+        "
+      >
+        <p>
+          nodeBucket is a user- and mobile-friendly task management app from
+          House Gryffindor that helps you manage your tasks anytime, anywhere.
+          If your life is busy, or you need to multitask at work, you definitely
+          need a great digital tool like nodeBucket to help you be organized,
+          efficient, and productive.
+          <br /><br />
+          nodebucket is designed with a simple and intuitive user interface,
+          making it easy for young and old to create and manage tasks using the
+          application. Every time a user creates a new task, that task will be
+          listed in the to-do list column. Any task can be dragged and dropped
+          to a new location vertically in the task list column based on the
+          user's priority. Tasks can also be updated and deleted when the user
+          needs to keep them up to date. All tasks can be tracked as they are
+          done and dragged and dropped into the task done list column. If the
+          user has the same task again, the task in the done list column can
+          also be dragged and dropped back to the to-do list column so that the
+          user does not need to create the same task again. Meanwhile, any task
+          in the done list column can be deleted if the user no longer needs
+          this done task in the done list column.
+          <br /><br />
+          nodebucket can help housewives become life experts, time management
+          masters, and super moms that everyone envies. nodebucket can help the
+          elderly to record daily tasks or things so that they can live
+          independently with more confidence. Children can also use this app to
+          learn how to record things, organize things, and manage time.
+          <br /><br />
+          If you like to use this app, please share your user experience with
+          us, and your friends and family around you. We will be very grateful
+          and keep developing new features for this app.
+          <br /><br />
+          We believe that nodebucket is your lifesaver, making your life simple
+          and organized.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

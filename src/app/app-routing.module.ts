@@ -58,8 +58,8 @@ const routes: Routes = [
     ]
   },
   {
-    path: '**',
-    redirectTo: 'session/not-found' // when user login with unidentified empId, page will redirect to not-found page.
+    path: '**', // random value
+    redirectTo: 'session/not-found' // when user login with unexpected value, page will redirect to not-found page.
   }
 ];
 
