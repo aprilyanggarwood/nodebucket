@@ -251,7 +251,7 @@ router.post("/:empId/tasks", async (req, res) => {
   }
 });
 
-// updateTasksByEmpId
+// updateTasks
 /**
  * @openapi
  *
@@ -261,7 +261,7 @@ router.post("/:empId/tasks", async (req, res) => {
  *       - Employees
  *     description: Finds an employee by Id and update this employee's to do list or done list
  *     summary: updates a task for an empId
- *     operationId: updateTasksByEmpId
+ *     operationId: updateTasks
  *     parameters:
  *       - name: empId
  *         in: path
@@ -356,7 +356,7 @@ router.put("/:empId/tasks", async (req, res) => {
   }
 });
 
-// deleteTaskByEmpId
+// deleteTask
 /**
  * @openapi
  * /api/employees/{empId}/tasks/{taskId}:
@@ -365,7 +365,7 @@ router.put("/:empId/tasks", async (req, res) => {
  *       - Employees
  *     description: Finds an employee by empId and delete one task by taskId from this employee's to do list or done list
  *     summary: deletes a taskId for an empId
- *     operationId: deleteTaskByEmpId
+ *     operationId: deleteTask
  *     parameters:
  *       - name: empId
  *         in: path
